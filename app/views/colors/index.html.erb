@@ -1,0 +1,40 @@
+<nav class="bg-slate-50" data-controller="colors">
+  <div class="mx-auto max-w-7xl px-6 sm:px-4 lg:px-6">
+    <div class="flex h-16 items-center justify-between">
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <%= form_tag do %>
+            <%= color_field("color", "#AB0D0D", data: { action: "change->colors#selectColor",
+                                                        'colors-target': 'selecedColor' } ) %>
+          <% end %>
+        </div>
+        <div class="ml-6 sm:block">
+          <div class="sm:block">
+           
+            <%= form_tag("/", { class: "flex" }) do %>
+              <%= select_tag(:mode, options_for_select(
+                [
+                  ["monochrome", "monochrome"],
+                  ["monochrome-dark", "monochrome-dark"],
+                  ["monochrome-light", "monochrome-light"],
+                  ["analogic", "analogic"],
+                  ["complement", "complement"],
+                  ["analogic-complement", "analogic-complement"],
+                  ["triad", "triad"],
+                  ["quad", "quad"]
+                ], {}), { class: "pl-2 pr-6 py-2 mr-1 rounded-sm", data: { action: "change->colors#selectScheme", 
+                                                                           'colors-target': "selectedScheme" } }
+              ) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div>
+  <div class="overflow-hidden rounded-sm bg-white shadow grid grid-cols-5" id="colors-grid">
+    
+</div>
+
